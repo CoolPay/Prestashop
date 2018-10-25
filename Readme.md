@@ -2,4 +2,4 @@
 
 ## About
 
-Accept payments via QuickPay payment gateway.
+Accept payments via CoolPay payment gateway.
