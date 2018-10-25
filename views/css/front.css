@@ -1,0 +1,19 @@
+﻿p.payment_module.coolpay a {
+	padding-left: 15px;
+}
+p.payment_module.coolpay img {
+	margin: 1px 2px 1px 0px;
+}
+p.payment_module.coolpay a:after {
+	display: block;
+	content: "\f054";
+	position: absolute;
+	right: 15px;
+	margin-top: -11px;
+	top: 50%;
+	font-family: "FontAwesome";
+	font-size: 25px;
+	height: 22px;
+	width: 14px;
+	color: #777;
+}
