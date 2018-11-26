@@ -26,7 +26,7 @@ class CoolPayCompleteModuleFrontController extends ModuleFrontController
         for ($i = 0; $i < 10; $i++) {
             /* Wait for validation */
             $trans = Db::getInstance()->getRow('SELECT *
-                FROM '._DB_PREFIX_.'quickpay_execution
+                FROM '._DB_PREFIX_.'coolpay_execution
                 WHERE `id_cart` = '.$id_cart.'
                 ORDER BY `id_cart` ASC');
             if ($trans && $trans['accepted']) {
@@ -35,14 +35,14 @@ class CoolPayCompleteModuleFrontController extends ModuleFrontController
             sleep(1);
         }
         if ($trans && !$trans['accepted']) {
-            $quickpay = new Quickpay();
-            $setup = $quickpay->getSetup();
-            $json = $quickpay->doCurl('payments/'.$trans['trans_id']);
-            $vars = $quickpay->jsonDecode($json);
+            $coolpay = new Coolpay();
+            $setup = $coolpay->getSetup();
+            $json = $coolpay->doCurl('payments/'.$trans['trans_id']);
+            $vars = $coolpay->jsonDecode($json);
             $json = Tools::jsonEncode($vars);
             if ($vars->accepted == 1) {
-                $checksum = $quickpay->sign($json, $setup->private_key);
-                $quickpay->validate($json, $checksum);
+                $checksum = $coolpay->sign($json, $setup->private_key);
+                $coolpay->validate($json, $checksum);
             }
         }
         unset($this->context->cookie->id_cart);
