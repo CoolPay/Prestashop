@@ -18,5 +18,5 @@ if (_PS_VERSION_ >= '1.5.0.0') {
     die('Bad version');
 }
 
-$quickpay = new Coolpay();
-$quickpay->payment();
+$coolpay = new Coolpay();
+$coolpay->payment();
